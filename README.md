@@ -1,3 +1,3 @@
-BTC em USD
+BTC, USDT, ETH
 Analise de preço em tempo real
 
