@@ -1,3 +1,2 @@
-BTC, USDT, ETH
-Analise de preço em tempo real
+Analise de preços de criptomoedas em tempo BRL
 
