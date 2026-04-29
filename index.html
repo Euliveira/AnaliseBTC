@@ -8,45 +8,42 @@
         body {
             background-color: #0a0e12;
             color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0 auto; /* Centraliza no PC */
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0 auto;
             padding: 10px;
-            max-width: 500px; /* Mantém formato de App no Computador */
+            max-width: 500px;
             min-height: 100vh;
-            border-left: 1px solid #1a222d;
-            border-right: 1px solid #1a222d;
         }
         .header { text-align: center; color: #4fd1ed; font-size: 24px; margin-bottom: 15px; text-shadow: 0 0 10px #4fd1ed66; font-weight: bold; }
-        .ticker-bar { display: flex; justify-content: space-around; font-size: 11px; border-bottom: 1px solid #1a222d; padding-bottom: 10px; }
+        .ticker-bar { display: flex; justify-content: space-around; font-size: 11px; border-bottom: 1px solid #1a222d; padding-bottom: 10px; margin-bottom: 10px; }
         .gold-txt { color: #ffd700; } .up { color: #00ff88; } .down { color: #ff4444; }
         
-        .main-chart-container {
+        .main-card {
             background: #111820;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 15px;
-            margin-top: 15px;
             border: 1px solid #1a222d;
         }
-        .prediction-badge { background: #00ff8822; color: #00ff88; padding: 5px 10px; border-radius: 5px; float: right; font-weight: bold; font-size: 12px; }
+        .prediction-badge { background: #00ff8822; color: #00ff88; padding: 4px 8px; border-radius: 5px; float: right; font-weight: bold; font-size: 12px; border: 1px solid #00ff8844; }
         
         #chart {
             width: 100%;
-            height: 200px;
+            height: 180px;
             margin-top: 15px;
-            border-radius: 5px;
-            overflow: hidden;
+            border-radius: 8px;
+            background-color: #0d1218; /* Garante fundo escuro */
         }
 
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
         .card { background: #161d26; padding: 12px; border-radius: 10px; border: 1px solid #1a222d; }
         
         .auto-button {
-            background: none; border: 2px solid #00ff88; color: #00ff88; border-radius: 10px;
-            padding: 12px 5px; text-align: center; font-weight: bold; font-size: 11px;
-            box-shadow: 0 0 10px #00ff8822; cursor: pointer; transition: 0.3s;
+            background: none; border: 1px solid #00ff88; color: #00ff88; border-radius: 10px;
+            padding: 12px 5px; text-align: center; font-weight: bold; font-size: 10px;
+            cursor: pointer; transition: 0.3s;
         }
-        .active-trade { background: #00ff88 !important; color: #000 !important; box-shadow: 0 0 20px #00ff88 !important; }
-        .footer-status { color: #444; font-size: 10px; text-align: center; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .active-trade { background: #00ff88 !important; color: #000 !important; box-shadow: 0 0 15px #00ff88; }
+        .footer-status { color: #555; font-size: 10px; text-align: center; margin-top: 15px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -54,29 +51,29 @@
     <div class="header">Will Tech Solutions</div>
 
     <div class="ticker-bar">
-        <span>GOLD: <span id="top-gold-price" class="gold-txt">---</span> <span id="top-gold-var">---</span></span>
-        <span>BTC/USDT: <span id="top-btc-price" class="up">---</span> <span id="top-btc-var">---</span></span>
+        <span>GOLD: <span id="top-gold-price" class="gold-txt">---</span></span>
+        <span>BTC/USDT: <span id="top-btc-price" class="up">---</span></span>
     </div>
 
-    <div class="main-chart-container">
-        <div><strong>BITCOIN (BTC)</strong> <span id="ia-prediction" class="prediction-badge">IA: 00.00%</span></div>
-        <div style="font-size: 22px; margin: 10px 0;">
+    <div class="main-card">
+        <div><strong style="font-size: 14px;">BITCOIN (BTC)</strong> <span id="ia-prediction" class="prediction-badge">IA: --%</span></div>
+        <div style="font-size: 24px; margin: 8px 0; font-weight: bold;">
             <span id="main-btc-price">$0.00</span> 
-            <small id="main-btc-var" class="down" style="font-size: 12px;">0.00%</small>
+            <small id="main-btc-var" class="up" style="font-size: 12px; font-weight: normal;">0.00%</small>
         </div>
         <div id="chart"></div>
     </div>
 
     <div class="grid-container">
-        <div class="card"><small>SOLANA (SOL)</small><br><span id="sol-data" class="up">---</span></div>
-        <div class="card"><small>GOLD (PAXG)</small><br><span id="gold-data" class="gold-txt">---</span></div>
+        <div class="card"><small style="color:#888">SOLANA (SOL)</small><br><span id="sol-data" class="up" style="font-weight:bold">---</span></div>
+        <div class="card"><small style="color:#888">GOLD (PAXG)</small><br><span id="gold-data" class="gold-txt" style="font-weight:bold">---</span></div>
     </div>
 
-    <h4 style="margin-bottom: 10px; font-size: 13px; color: #888;">AUTOTRADE AUTOMATION</h4>
+    <h4 style="margin: 15px 0 10px 0; font-size: 12px; color: #888; text-transform: uppercase;">Autotrade Automation</h4>
     <div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
-        <div id="btn-smc" class="auto-button" onclick="marcarTecnica('SMC')">AUTO<br>SMC</div>
-        <div id="btn-ob" class="auto-button" onclick="marcarTecnica('OB')">AUTO<br>ORDER BLOCK</div>
-        <div id="btn-trend" class="auto-button" onclick="marcarTecnica('TREND')">AUTO<br>TREND</div>
+        <div id="btn-smc" class="auto-button">AUTO<br>SMC</div>
+        <div id="btn-ob" class="auto-button">AUTO<br>ORDER BLOCK</div>
+        <div id="btn-trend" class="auto-button">AUTO<br>TREND</div>
     </div>
 
     <div id="status-msg" class="footer-status">MONITORANDO ATIVOS...</div>
@@ -84,84 +81,81 @@
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
 
     <script>
-        // Inicialização do Gráfico
         const container = document.getElementById('chart');
+        
+        // CONFIGURAÇÃO DO GRÁFICO (DARK MODE)
         const chart = LightweightCharts.createChart(container, {
-            layout: { backgroundColor: '#111820', textColor: '#d1d4dc' },
-            grid: { vertLines: { color: '#1a222d' }, horzLines: { color: '#1a222d' } },
-            timeScale: { timeVisible: true, secondsVisible: true },
-            handleScroll: true, handleScale: true,
+            layout: { 
+                backgroundColor: '#0d1218', 
+                textColor: '#d1d4dc',
+                fontSize: 10
+            },
+            grid: { 
+                vertLines: { color: '#161d26' }, 
+                horzLines: { color: '#161d26' } 
+            },
+            rightPriceScale: { borderVisible: false },
+            timeScale: { borderVisible: false },
+            handleScroll: false,
+            handleScale: false,
         });
-        const lineSeries = chart.addLineSeries({ color: '#00ff88', lineWidth: 2 });
 
-        let ultimoPreco = 0;
-
-        // Função para desenhar marcações técnicas no gráfico
-        function marcarTecnica(tipo) {
-            const time = Math.floor(Date.now() / 1000);
-            
-            if (tipo === 'SMC') {
-                // Desenha uma linha de Suporte (SMC Concept)
-                lineSeries.createPriceLine({
-                    price: ultimoPreco * 0.999,
-                    color: '#4fd1ed',
-                    lineWidth: 2,
-                    lineStyle: 2,
-                    axisLabelVisible: true,
-                    title: 'SMC SUPPORT',
-                });
-            } else if (tipo === 'OB') {
-                // Simula uma zona de Order Block
-                alert("ZONA ORDER BLOCK IDENTIFICADA EM: $" + ultimoPreco);
-            }
-            
-            // Ativa o visual do botão
-            const id = tipo === 'SMC' ? 'btn-smc' : tipo === 'OB' ? 'btn-ob' : 'btn-trend';
-            document.querySelectorAll('.auto-button').forEach(b => b.classList.remove('active-trade'));
-            document.getElementById(id).classList.add('active-trade');
-        }
+        const lineSeries = chart.addLineSeries({ 
+            color: '#00ff88', 
+            lineWidth: 2,
+            priceLineVisible: false,
+            lastValueVisible: true
+        });
 
         async function atualizarApp() {
             try {
                 const response = await fetch('http://127.0.0.1:5000/dados');
                 const dados = await response.json();
 
-                const btc = dados["BTCUSDT"];
-                ultimoPreco = btc.preco;
+                if (dados["BTCUSDT"]) {
+                    const btc = dados["BTCUSDT"];
+                    const sol = dados["SOLUSDT"];
+                    const gold = dados["PAXGUSDT"];
 
-                // Atualiza Textos
-                document.getElementById('top-btc-price').innerText = `$${btc.preco}`;
-                document.getElementById('main-btc-price').innerText = `$${btc.preco.toLocaleString()}`;
-                document.getElementById('top-btc-var').innerText = `${btc.variacao}%`;
-                document.getElementById('ia-prediction').innerText = `IA: ${btc.prob}%`;
-                
-                document.getElementById('sol-data').innerText = `$${dados["SOLUSDT"].preco}`;
-                document.getElementById('gold-data').innerText = `$${dados["PAXGUSDT"].preco}`;
+                    // Atualiza Textos
+                    document.getElementById('top-btc-price').innerText = `$${btc.preco}`;
+                    document.getElementById('main-btc-price').innerText = `$${btc.preco.toLocaleString()}`;
+                    document.getElementById('main-btc-var').innerText = `${btc.variacao}%`;
+                    document.getElementById('ia-prediction').innerText = `IA: ${btc.prob}%`;
+                    
+                    document.getElementById('sol-data').innerText = `$${sol.preco} (${sol.variacao}%)`;
+                    document.getElementById('gold-data').innerText = `$${gold.preco} (${gold.variacao}%)`;
+                    document.getElementById('top-gold-price').innerText = `$${gold.preco}`;
 
-                // Atualiza Gráfico
-                lineSeries.update({
-                    time: Math.floor(Date.now() / 1000),
-                    value: btc.preco
-                });
+                    // Atualiza Gráfico
+                    lineSeries.update({
+                        time: Math.floor(Date.now() / 1000),
+                        value: btc.preco
+                    });
 
-                // Automação Baseada na Probabilidade da IA
-                if (btc.prob > 80) {
-                    document.getElementById('btn-smc').classList.add('active-trade');
-                    document.getElementById('status-msg').innerText = "IA SUGERE ENTRADA AGORA";
-                    document.getElementById('status-msg').style.color = "#00ff88";
+                    // Botões Neon conforme IA
+                    if (btc.prob > 70) {
+                        document.getElementById('btn-smc').classList.add('active-trade');
+                        document.getElementById('status-msg').innerText = "OPORTUNIDADE DE COMPRA DETECTADA";
+                        document.getElementById('status-msg').style.color = "#00ff88";
+                    } else {
+                        document.getElementById('btn-smc').classList.remove('active-trade');
+                        document.getElementById('status-msg').innerText = "MONITORANDO MERCADO...";
+                        document.getElementById('status-msg').style.color = "#555";
+                    }
                 }
-
             } catch (e) {
-                document.getElementById('status-msg').innerText = "AGUARDANDO BACKEND...";
+                console.log("Erro ao buscar dados:", e);
             }
         }
 
-        setInterval(atualizarApp, 2000);
-        
-        // Ajuste de tamanho para o PC
+        // Ajuste de tamanho
         window.addEventListener('resize', () => {
             chart.applyOptions({ width: container.offsetWidth });
         });
+
+        setInterval(atualizarApp, 2000);
+        atualizarApp(); // Chama a primeira vez
     </script>
 </body>
 </html>
